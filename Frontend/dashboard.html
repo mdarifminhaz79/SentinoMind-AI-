@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SentinoMind | Automation Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- Animated Background -->
+    <div class="neural-bg">
+        <div class="gradient-orb orb1"></div>
+        <div class="gradient-orb orb2"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <button id="menuBtn" class="menu-toggle glass-card">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR - AI API KEYS SECTION -->
+        <aside class="sidebar glass-card" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-side">
+                    <i class="fas fa-robot"></i>
+                    <h2>SentinoMind</h2>
+                </div>
+                <p class="neural-id">AI Automation System</p>
+            </div>
+
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fas fa-user-astronaut"></i>
+                </div>
+                <div class="user-info">
+                    <h4>AI Operator</h4>
+                    <p id="userEmail">Loading...</p>
+                </div>
+            </div>
+
+            <!-- AI PROVIDERS SECTION -->
+            <div class="api-section">
+                <h3><i class="fas fa-microchip"></i> AI PROVIDERS</h3>
+                
+                <div class="api-inputs">
+                    <!-- Hugging Face -->
+                    <div class="module-item" data-module="huggingface">
+                        <label><i class="fab fa-hugging"></i> Hugging Face API</label>
+                        <div class="input-wrapper">
+                            <input type="password" class="module-input" id="hfApi" placeholder="Enter Hugging Face API key">
+                            <button class="toggle-visibility" data-target="hfApi">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="module-status">
+                            <span class="status-badge idle" id="hfStatus"></span>
+                            <span id="hfStatusText">Not Connected</span>
+                        </div>
+                    </div>
+
+                    <!-- Groq -->
+                    <div class="module-item" data-module="groq">
+                        <label><i class="fas fa-bolt"></i> Groq API</label>
+                        <div class="input-wrapper">
+                            <input type="password" class="module-input" id="groqApi" placeholder="Enter Groq API key">
+                            <button class="toggle-visibility" data-target="groqApi">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="module-status">
+                            <span class="status-badge idle" id="groqStatus"></span>
+                            <span id="groqStatusText">Not Connected</span>
+                        </div>
+                    </div>
+
+                    <!-- Together AI -->
+                    <div class="module-item" data-module="together">
+                        <label><i class="fas fa-network-wired"></i> Together AI API</label>
+                        <div class="input-wrapper">
+                            <input type="password" class="module-input" id="togetherApi" placeholder="Enter Together AI key">
+                            <button class="toggle-visibility" data-target="togetherApi">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="module-status">
+                            <span class="status-badge idle" id="togetherStatus"></span>
+                            <span id="togetherStatusText">Not Connected</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="sync-btn" id="connectAIBtn">
+                    <i class="fas fa-plug"></i>
+                    <span>Connect AI Providers</span>
+                </button>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="system-metrics">
+                    <div class="metric">
+                        <i class="fas fa-clock"></i>
+                        <span id="systemTime"></span>
+                    </div>
+                    <div class="metric">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Automation Ready</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-view">
+            <nav class="top-nav glass-card">
+                <div class="nav-left">
+                    <div class="neural-wave">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <span class="system-status">System Online</span>
+                </div>
+                <div class="nav-right">
+                    <a href="#" onclick="showPage('dashboard')" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" onclick="showPage('history')" class="nav-link">
+                        <i class="fas fa-history"></i>
+                        <span>History</span>
+                    </a>
+                    <a href="#" onclick="showPage('settings')" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" id="logoutBtn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- DYNAMIC CONTENT AREA -->
+            <section id="content-area" class="welcome-zone">
+                <!-- Dashboard content loaded via JS -->
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toast"></div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
